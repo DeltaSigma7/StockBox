@@ -5,41 +5,44 @@ Whether you're managing your collection of model trains, DIY electronics compone
 ## Features
 - Simple and intuitive interface for easy inventory management
 - Support for categorizing and tagging items to keep your collection organized
+- Convert `.xlsx` file to database to keep the setup fast
 - Detailed item descriptions, including quantity, storage location, and additional notes
 - Alerts for low stock levels to ensure you never run out of essential items
-- Convert '.xlsx' file to database to keep the setup fast
 - Separate menu for adding entries to keep your system up to date
+- User-friendly interface with light and dark themes, featuring blue or green designs.
 
 
 ## Installation
 
-### Windows
+### Windows setup
 
-1. Download & Extract
------------
-Download complete code as zip. Extract all files and move 'StockBox_windows' folder to directory you want to store and run the project files.
+#### 1. Download & Extract
 
-2. 
-3. 
-1. Move the Folder to the Desired Directory
---------------------------------------------
-Simply drag and drop the entire project folder into the directory where you want to store and run the project files.
+- **Download**: Get the latest release (`StockBox_V_XX.zip`) from the [releases page](1).
+- **Extract**: Unzip all the files and move the folder to your preferred directory.
+  - **Tip**: Avoid using `Program` or `Program Files (x86)` to sidestep administrative issues.
 
-2. Adjust the config.ini File
------------------------------
-Open the `config.ini` file located within the project folder. Update the configuration settings according to your environment and preferences. 
-Ensure that all required fields are correctly set up, such as database connection details, virtual keyboard settings, etc.
+#### 2. Adjust the `config.ini` File
 
-3. You're Done!
----------------
-Once you have moved the folder and adjusted the `config.ini` file, the setup is complete. You can now run the project without any further configuration.
+- **Locate**: Open the `config.ini` file in the project folder.
+- **Configure**: Update the settings to match your environment and preferences. Ensure all required fields, such as database connection details and virtual keyboard settings, are correctly set up.
+  - **More Info**: Detailed configuration instructions are provided below.
+
+#### 3. You're Done!
+
+- **Run**: With the folder moved and `config.ini` configured, your setup is complete!
+  - **Tip**: Create a desktop shortcut for easier access.
 
 
 ### Linux
 
 1. Update system
 ----------------
-Run "sudo apt-get update" and "sudo apt-get dist-upgrade -y" to fully update ur system. This maybe take some time. 
+update your system, this maybe take sometime
+```bash
+sudo apt-get update
+sudo apt-get dist-upgrade -y
+```
 
 2. Install TKinter 
 ------------------
@@ -94,18 +97,50 @@ Now ur system is ready to use
 
 ## Instructions
 
-Create new enrty:
-- Name: Choose a Name for the item you want to insert into the database 
-- Count: Set a Number of pieces u already own (must be a number)
-- Depot: Type in the storage place
-- Tags: Choose tags so u can search for items seperated by ',' (example: M3, Screw, Metric, Stainless-Steel, DIN-912) 
-- Description: Insert a short description for ur entry, this will be displayed
-- Trigger: Set to a number which reacts as a low stock alert (must be a number)
+### Create new enrty
+|Option | Description |
+|-------|---------------------------------------------|
+| Name | Choose a Name for the item you want to insert into the database| 
+| Count | Set a Number of pieces u already own (must be a number)|
+| Depot | Type in the storage place|
+| Tags | Choose tags so u can search for items seperated by ',' (example: M3, Screw, Metric, Stainless-Steel, DIN-912)| 
+| Description | Insert a short description for ur entry, this will be displayed|
+| Trigger | Set to a number which reacts as a low stock alert (must be a number)|
 
-Searchbar Functions:
-- Hit the search bar to list the first 50 entries.
+### Searchbar Functions:
+- Hit the search bar to list all entries.
 - Regular searching into tags for precision output.
 - Type "D:" into the search bar to search for specific depots, to find objects faster.
 - Type "deleted" in the search bar to show all deleted items (items can be restored).
 
-Thank you for using StockBox, if u like this programm feel free to buy me some coffee (https://ko-fi.com/cadam)
+### Import from `.xslx` file
+Please use the `Example_table.xlsx` table as reference. If u don#t use the exact format it wouldnt be working!!!
+
+
+## `config.ini`
+
+| Option  | Description                                      |
+|---------|--------------------------------------------------|
+| virtual_keyboard  | recomented for Raspberry Pi usage. 0=disabled, 1 = enabled|
+| keyboard_layout  | Choose keyboard layout, temporary supported **qwerty** and **qwertz**|
+| local_db  | 0 = use Server based database like MySQL, 1 = create a local database|
+|dark_theme | 0 = Dark-Theme, 1 = Light-Theme|
+|color_theme| Supported colors **blue** and **green**|
+|Setting for server based Database|
+|host| IP-adress from Database|
+|port| Port from database (MySQL standard = 3306|
+|username| User name from user who can create new Tables|
+|password| Password for user|
+
+
+## Credits
+
+Note: Parts of the code in this example are from [CustomTkinter][2], [CTkMessagebox][3], 
+
+If you find my programm help/- useful and would like to support me, feel free to buy me a Ko-fi. However, if you don't want to, that's okay too!
+
+I'm always open to feedback to improve this project further!
+
+[1]:https://github.com/CadamTechnology/StockBox/releases
+[2]:https://github.com/TomSchimansky/CustomTkinter
+[3]:https://github.com/Akascape/CTkMessagebox
