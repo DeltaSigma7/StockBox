@@ -134,7 +134,7 @@ sudo nano /usr/bin/autostart_stockbox.sh
 ```bash
 #!/bin/sh
 (sleep 5s && cd /path/to/Stockbox_pyhton-script/ && pyhton StockBox_v_x_x.py) &
-exit 0" 
+exit 0
 ```
 
 #### 2. `.desktop` file
@@ -145,11 +145,11 @@ sudo nano /etc/xdg/autostart/Stockbox_Desktop.desktop
 ```
 - **Insert**: Add the following lines to the newly created file. Make sure to enter the correct path to the already created bash file.
 ```bash 
-"[Desktop]
+[Desktop]
 Name = free_choosable_name
 Type = Application
 Exec = sh /usr/bin/autostart_stockbox.sh (must be the path to the already created bash-file)
-Terminal = false"
+Terminal = false
 ```
 After rebooting the system everything should work well.
 
