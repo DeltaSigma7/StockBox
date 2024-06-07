@@ -1,7 +1,7 @@
 # Stockbox
 Stockbox is a comprehensive inventory management program designed specifically for hobbyists. 
 Whether you're managing your collection of model trains, DIY electronics components, or any other hobby materials, Stockbox provides an easy and efficient way to keep track of your inventory.
-
+---
 ## Features
 - Simple and intuitive interface for easy inventory management
 - Support for categorizing and tagging items to keep your collection organized
@@ -10,7 +10,26 @@ Whether you're managing your collection of model trains, DIY electronics compone
 - Alerts for low stock levels to ensure you never run out of essential items
 - Separate menu for adding entries to keep your system up to date
 - User-friendly interface with light and dark themes, featuring blue or green designs.
+---
+## Quick Setup Guide
 
+This is the quick installation guide! I know, nobody reads the entire `ReadMe.md` file (but it's highly recommended!). Here's a short version to get you started:
+
+### Windows
+
+1. **Download & Unzip**
+   - Download the latest release and unzip it to your preferred directory.
+
+2. **Edit `config.ini`**
+   - Open the `config.ini` file and update the settings.
+
+3. **Start StockBox**
+   - Launch **StockBox** and import your `.xlsx` file to quickly set up the database.
+
+4. **You're All Set!**
+   - Your setup is complete, and you're ready to go!
+
+---
 
 ## Installation
 
@@ -36,23 +55,50 @@ Whether you're managing your collection of model trains, DIY electronics compone
 
 ### Linux
 
-1. Update system
-----------------
-update your system, this maybe take sometime
+#### 1. Update system
+
+- **Update** :Update your system, this may take some time.
 ```bash
 sudo apt-get update
 sudo apt-get dist-upgrade -y
 ```
 
-2. Install TKinter 
-------------------
-Type "sudo apt-get install python3-tk" to install the Tkinter libary for python.  
+#### 2. Install TKinter 
+- **Install**: Install the Tkinter library for Python.
+```bash
+sudo apt install python3-tk
+```
 
-3. Install requirements
------------------------
-Navigate to the folder the project files are stored in ("cd path/to/stored/project"). 
-After you navigate there install all python libaries with "pip3 install -r requirements.txt --break-system-packages" make sure pip is already installed
-wait till everything is installed.
+#### 3. Download package
+- **Download**: Open terminal and download latest version of **StockBox**.
+```bash
+git clone https://github.com/CadamTechnology/StockBox
+```  
+
+#### 4. Install requirements
+- **Navigate**: Move to the **StockBox** folder.
+```bash
+cd StockBox/StockBox
+```
+-**Install**: Install the required dependencies.
+```bash
+pip install -r requirments.txt
+``` 
+
+#### 5. Edit `config.ini`
+- **Adjust**: Open the `config.ini` file to update the settings.
+```bash
+nano ~/StockBox/StockBox/config.ini
+``` 
+- **Save**: After making adjustments, save the changes by pressing <kbd>CTRL</kbd> + <kbd>S</kbd>, then exit the file by pressing <kbd>CTRL</kbd> + <kbd>X</kbd>.
+
+#### 6. Test run
+- **Run**: First navigate to stored location and run the `StockBox_Pi.py` file. if U don't move to the dicatrory you will get some Errors.
+```bash
+cd ~/StockBox/StockBox/
+pyhton3 StockBox_Pi.py
+``` 
+
 
 4. Adjust the config.ini File
 -----------------------------
