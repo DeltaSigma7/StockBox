@@ -3,6 +3,5 @@ CTkMessagebox
 pillow
 mysql-connector-python
 configparser
-sqlite3
 CTkKeyboard
 pandas
