@@ -5,3 +5,4 @@ mysql-connector-python
 configparser
 CTkKeyboard
 pandas
+openpyxl
