@@ -93,7 +93,7 @@ sudo apt install python3-tk
 #### 3. Download package
 - **Download**: Open terminal and download latest version of **StockBox**.
 ```bash
-git clone https://github.com/CadamTechnology/StockBox
+git clone https://github.com/DeltaSigma7/StockBox
 ```  
 
 #### 4. Install requirements
@@ -203,6 +203,6 @@ If you find my programm help/- useful and would like to support me, feel free to
 
 I'm always open to feedback to improve this project further!
 
-[1]:https://github.com/CadamTechnology/StockBox/releases
+[1]:https://github.com/DeltaSigma7/StockBox/releases
 [2]:https://github.com/TomSchimansky/CustomTkinter
 [3]:https://github.com/Akascape/CTkMessagebox
