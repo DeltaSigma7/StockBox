@@ -47,7 +47,7 @@ This is the quick installation guide! I know, nobody reads the entire `ReadMe.md
 - Launch **StockBox** and import your `.xlsx` file to quickly set up the database.
 
 #### 6. Auto start (optional)
-- Create `.bash` and `.desktop` file for auto starting.
+- Setup a `systemd service` for autostarting.
   
 ---
 
@@ -94,12 +94,16 @@ sudo apt install python3-tk
 - **Download**: Open terminal and download latest version of **StockBox**.
 ```bash
 git clone https://github.com/DeltaSigma7/StockBox
-```  
+```
+- **Note**: For the next steps its requirent to know your username. Replace `[USERNAME]` with the actual username of the user running the script. If you're unsure of your username, you can find it by running the following command:
+  ```bash
+  whoami
+  ```
 
 #### 4. Install requirements
 - **Navigate**: Move to the **StockBox** folder.
 ```bash
-cd StockBox/StockBox
+cd [USERNAME]/StockBox
 ```
 -**Install**: Install the required dependencies.
 ```bash
@@ -109,7 +113,7 @@ pip install -r requirments.txt
 #### 5. Edit `config.ini`
 - **Adjust**: Open the `config.ini` file to update the settings. By default it's set to a local databse without a virtual keyboard in darkmode with green color.
 ```bash
-nano ~/StockBox/StockBox/config.ini
+nano ~/[USERNAME]/StockBox/config.ini
 ``` 
 - **Save**: After making adjustments, save the changes by pressing <kbd>CTRL</kbd> + <kbd>S</kbd>, then exit the file by pressing <kbd>CTRL</kbd> + <kbd>X</kbd>.
   - **More Info**: Detailed configuration instructions are provided below.
@@ -117,41 +121,64 @@ nano ~/StockBox/StockBox/config.ini
 #### 6. Run the code
 - **Run**: Navigate to the stored location and execute the `StockBox_v_x_x.py` file (make sure to enter the right version). If you don't move to the directory, it maybe cause some errors.
 ```bash
-cd ~/StockBox/StockBox/
+cd ~/[USERNAME]/StockBox/
 pyhton3 StockBox_v_x_x.py
 ``` 
 
 ### Raspberry Pi
 The following steps are for setup the code on autostart for a raspberry pi with touchscreen as standalone. I recommend a Raspberry Pi 4b with 4GB Ram. Please following the **Linux-Instrucion** above. 
 
-#### 1. Bash file
+#### 1. Creating a `.service` file
 
-- **Create**: For an automatic start setup, first create a bash file.
+- **Create**: To set up the autostart, first create a `.service` file.
 ```bash
-sudo nano /usr/bin/autostart_stockbox.sh
-```
-- **Insert**: add the following lines to the new created file. make sure u enter the right path and version number.
-```bash
-#!/bin/sh
-(sleep 5s && cd /path/to/Stockbox_pyhton-script/ && pyhton StockBox_v_x_x.py) &
-exit 0
+sudo nano /etc/systemd/system/stockbox.service
 ```
 
-#### 2. `.desktop` file
-
-- **Create**: After creating the bash file, run the following command:
+- **Insert**: Copy and paste the following lines into the file. 
 ```bash
-sudo nano /etc/xdg/autostart/Stockbox_Desktop.desktop
+[Unit]
+Description=StockBox autostart
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/[USERNAME]/Stockbox/StockBox/StockBox_v_x_x.py
+WorkingDirectory=/home/[USERNAME]/Stockbox/StockBox
+Environment=DISPLAY=:0
+User=[USERNAME]
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
+
 ```
-- **Insert**: Add the following lines to the newly created file. Make sure to enter the correct path to the already created bash file.
-```bash 
-[Desktop]
-Name=free_choosable_name
-Type=Application
-Exec=sh /usr/bin/autostart_stockbox.sh (must be the path to the already created bash-file)
-Terminal=false
+
+
+#### 2. Reload the Daemon
+- **Reload**: Reload the systemd daemon to apply the changes.
+```bash
+sudo systemctl daemon-reload
 ```
-After rebooting the system everything should work well.
+#### 3. Enable the Service
+- **Enable**: Enable the service so it will start automatically on boot.
+```bash
+sudo systemctl enable stockbox.service
+```
+
+#### 4. Start the Service (for testing)
+- **Start:**  Start the service to test if everything works correctly.
+```bash
+sudo systemctl start stockbox.service
+```
+
+#### 5. Reboot and Verify
+- **Reboot**: Reboot the system to make sure the autostart works after a restart.
+```bash
+sudo reboot
+```
+After the reboot, the StockBox service should automatically start.
 
 ---
 ## Instructions
